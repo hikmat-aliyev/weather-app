@@ -104,14 +104,14 @@ body {
     z-index: 999;
 }
 
-@keyframes spin {
+/*@keyframes spin {
     0% {
         transform: rotate(0deg);
     }
     100% {
         transform: rotate(360deg);
     }
-}
+}*/
 
 #loader p {
     margin-top: 20px;
