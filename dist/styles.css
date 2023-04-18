@@ -118,3 +118,8 @@ body {
     color: #f3f3f3;
 }
 
+#error-text {
+    margin-left: 50px;
+    margin-top: 10px;
+}
+

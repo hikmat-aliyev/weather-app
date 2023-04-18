@@ -18,9 +18,10 @@ async function getWeatherData(city){
         const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=5ff0ce56466745f2bd183651231504&q=${city}`, {mode: 'cors'})
         const weatherData = await response.json();
         if(weatherData.error){
-            alert(weatherData.error.message);
+            document.getElementById("error-text").textContent = weatherData.error.message;
             return weatherData;
         }else {
+            document.getElementById("error-text").textContent = " ";
             console.log(weatherData);
             return weatherData;
         }
