@@ -19,7 +19,7 @@ async function getWeatherData(city){
         const weatherData = await response.json();
         if(weatherData.error){
             alert(weatherData.error.message);
-            return false;
+            return weatherData;
         }else {
             console.log(weatherData);
             return weatherData;
@@ -48,18 +48,21 @@ async function setWeatherProperties() {
 
     const property = await getWeatherData(input);
   
-    weatherCondition.textContent = property.current.condition.text;
-    region.textContent = property.location.name + ", " + property.location.country;
+    if(!property.error) {
+        weatherCondition.textContent = property.current.condition.text;
+        region.textContent = property.location.name + ", " + property.location.country;
 
-    temperature.textContent = property.current.temp_c;
+        temperature.textContent = property.current.temp_c;
 
-    feelsLike.textContent = 'Feels like: ' + property.current.feelslike_c;
+        feelsLike.textContent = 'Feels like: ' + property.current.feelslike_c;
 
-    wind.textContent = 'Wind: ' + property.current.wind_kph + 'kph';
+        wind.textContent = 'Wind: ' + property.current.wind_kph + 'kph';
 
-    humidity.textContent = 'Humidity: ' + property.current.humidity + '%';
+        humidity.textContent = 'Humidity: ' + property.current.humidity + '%';
+    }
     
     loader.style.display = "none";
+    
 }
 
 setWeatherProperties();
